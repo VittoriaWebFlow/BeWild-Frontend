@@ -3,19 +3,25 @@ import "../App.css";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar-custom d-none d-lg-block pt-5">
+    <div className="sidebar-custom d-none bg-transparent d-lg-block mt-4">
       <ul className="list-unstyled p-4">
         <li className="pb-3">
-          <a href="#">🎁 Idee regalo</a>
+          <a href="#">Profilo</a>
         </li>
         <li className="pb-3">
-          <a href="#">❤️ Preferiti</a>
+          <a href="#"> Idee regalo</a>
         </li>
         <li className="pb-3">
-          <a href="#">🗣 Forum</a>
+          <a href="#"> Preferiti</a>
         </li>
         <li className="pb-3">
-          <a href="#">🏷 Offerte</a>
+          <a href="#">Forum</a>
+        </li>
+        <li className="pb-3">
+          <a href="#"> Offerte</a>
+        </li>
+        <li className="pb-3">
+          <a href="#">Carrello</a>
         </li>
       </ul>
     </div>

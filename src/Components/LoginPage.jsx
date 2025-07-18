@@ -3,24 +3,19 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 
 const LoginPage = ({ setUser }) => {
-  // 🔐 1. Creo due stati per email e password (sono come "caselle vuote")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // 👉 serve per cambiare pagina
+  const navigate = useNavigate();
 
-  // ✅ 2. Questa funzione parte quando clicchi su "Accedi"
   const handleLogin = (e) => {
-    e.preventDefault(); // 🛑 evita il refresh della pagina
+    e.preventDefault();
 
-    // 🧠 3. Qui controllo se le credenziali sono giuste (finta verifica)
-    if (email === "vittoria98@gmail.com" && password === "1234") {
-      // 👤 4. Salvo i dati dell'utente
+    if (email === "vittoria98@gmail.com" && password === "1234567") {
       const fakeUser = {
-        name: "Eros Massa",
-        photo: "https://via.placeholder.com/100", // 📸 immagine di esempio
+        name: "Vittoria Sacchi",
       };
-      setUser(fakeUser); // ✅ lo salvo nello stato globale
-      navigate("/homepage"); // 🚀 vado alla Homepage
+      setUser(fakeUser);
+      navigate("/homepage");
     } else {
       alert("Email o password sbagliata 😕");
     }
@@ -30,10 +25,10 @@ const LoginPage = ({ setUser }) => {
     <div className="d-flex justify-content-center align-items-center vh-100">
       <form
         onSubmit={handleLogin}
-        className=" p-5 rounded-0 shadow"
+        className=" p-5 rounded-0 shadow-lg"
         style={{ width: "370px", height: "520px" }}
       >
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center ">
           <img src="./BeWildlogo.png" className="logo-navbar"></img>
         </div>
         <h5 className="text-light fw-light pb-3 d-flex justify-content-center">
