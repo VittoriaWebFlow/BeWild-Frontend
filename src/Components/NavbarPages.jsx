@@ -5,6 +5,7 @@ import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const NavbarPages = ({ setUser }) => {
+  const [carrello, setCarrello] = useState([]);
   const navigate = useNavigate();
   return (
     <div className="d-flex navbar-top-custom align-items-center justify-content-evenly">
@@ -14,7 +15,7 @@ const NavbarPages = ({ setUser }) => {
         </i>
       </Link>
 
-      <i class="bi bi-chat-right fs-5 text-light">
+      <i class="bi bi-gift fs-5 text-light">
         <button className=" bg-transparent border-0"></button>{" "}
       </i>
       <Link to="/Homepage">
@@ -24,9 +25,12 @@ const NavbarPages = ({ setUser }) => {
           className="logo-navbar"
         />
       </Link>
-      <i class="bi bi-cart text-light fs-4">
-        <button className="bg-transparent border-0"></button>
-      </i>
+      <i
+        className="bi bi-cart fs-4 text-light"
+        title="Carrello"
+        onClick={() => navigate("/carrello")}
+        style={{ cursor: "pointer" }}
+      ></i>
       <Dropdown>
         <Dropdown.Toggle
           variant="trasparent"

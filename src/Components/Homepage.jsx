@@ -98,7 +98,7 @@ const Homepage = ({ user, setUser, preferiti, setPreferiti }) => {
           </label>
         </div>
 
-        <Row className=" d-flex justify-content-center">
+        <Row className=" d-flex justify-content-center mb-6">
           {esperienzeFiltrate.map((exp) => (
             <Col
               xs={12}
@@ -110,7 +110,7 @@ const Homepage = ({ user, setUser, preferiti, setPreferiti }) => {
             >
               <Card
                 onClick={() => handleCardClick(exp.id)}
-                className="custom-card mb-1 rounded-5 shadow border-0 mt-5 ms-auto me-auto"
+                className="custom-card mb-5 rounded-5 shadow border-0 mt-5 ms-auto me-auto"
               >
                 <Card.Img
                   variant="top"
@@ -165,12 +165,10 @@ const Homepage = ({ user, setUser, preferiti, setPreferiti }) => {
 
       <Modal show={showPopup} onHide={() => setShowPopup(false)} centered>
         <Modal.Body className="bg-dark fs-4 text-center text-light">
-          Accesso necessario
-        </Modal.Body>
-        <Modal.Body className="bg-dark text-light text-center fw-light ">
-          Effettua l'accesso per aggiungere esperienze ai preferiti.
-        </Modal.Body>
-        <Modal.Body className="bg-dark d-flex justify-content-center">
+          <h4 className="mb-4">Accesso necessario</h4>
+          <h3 className="mb-4">
+            Effettua l'accesso per aggiungere esperienze ai preferiti.
+          </h3>
           <Button className="esplora-btn" onClick={() => setShowPopup(false)}>
             Chiudi
           </Button>
@@ -178,16 +176,16 @@ const Homepage = ({ user, setUser, preferiti, setPreferiti }) => {
       </Modal>
       <Card className="bg-dark text-white rounded-0 border-0 mt-5 ">
         <Card.Img
-          src="/banners/cielo.jpg"
+          src="/sub.jpg"
           alt="Card image"
           className="Card-img rounded-0 "
         />
-        <Card.ImgOverlay className=" text-center">
+        <Card.ImgOverlay className=" text-center ">
           <h2 className="ms-4 mt-5 pt-5 fw-lighter forum-title">
-            Onde di idee
+            Fai un regalo magico
           </h2>
-          <button className="border-0 ms-5 esplora-btn mt-5 text-light bg-transparent">
-            Forum
+          <button className="border-0 ms-5 esplora-btn mt-5 fw-bold text-light bg-transparent">
+            Scopri
           </button>
         </Card.ImgOverlay>
       </Card>

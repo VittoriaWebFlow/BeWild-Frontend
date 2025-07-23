@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import { Container, Row, Col, Modal, Button } from "react-bootstrap";
+import { Container, Row, Col, Modal, Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "../App.css";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import NavbarPages from "./NavbarPages";
 import MappaTest from "./MappaTest";
+import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useCarrello } from "../context/CarrelloContext";
 
 const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
   const { id } = useParams();
@@ -15,6 +18,11 @@ const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
   const recensioniRef = useRef(null);
   const [mostraTutte, setMostraTutte] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
+  const [data, setData] = useState("");
+  const [ora, setOra] = useState("");
+  const [partecipanti, setPartecipanti] = useState(1);
+  const { aggiungiAlCarrello, carrello, rimuoviDalCarrello } = useCarrello();
 
   useEffect(() => {
     axios
@@ -48,16 +56,35 @@ const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
     }
   };
 
+  const handleAggiungiAlCarrello = () => {
+    if (!user) {
+      setShowPopup(true);
+      return;
+    }
+
+    const nuovaPrenotazione = {
+      id: esperienza.id,
+      titolo: esperienza.titolo,
+      prezzo: esperienza.prezzo,
+      data,
+      ora,
+      partecipanti,
+      immagine: esperienza.immagine,
+      localita: esperienza.localita,
+    };
+
+    aggiungiAlCarrello(nuovaPrenotazione);
+    navigate("/carrello");
+  };
+
   return (
     <div>
       <Modal show={showPopup} onHide={() => setShowPopup(false)} centered>
         <Modal.Body className="bg-dark fs-4 text-center text-light">
-          Accesso necessario
-        </Modal.Body>
-        <Modal.Body className="bg-dark text-light text-center fw-light ">
-          Effettua l'accesso per aggiungere esperienze ai preferiti.
-        </Modal.Body>
-        <Modal.Body className="bg-dark d-flex justify-content-center">
+          <h4 className="mb-4">Accesso necessario</h4>
+          <h3 className="mb-4">
+            Effettua l'accesso per aggiungere esperienze ai preferiti.
+          </h3>
           <Button className="esplora-btn" onClick={() => setShowPopup(false)}>
             Chiudi
           </Button>
@@ -144,9 +171,7 @@ const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
             </p>
 
             <div ref={recensioniRef}>
-              <span className="text-dark fs-3 ps-3 fw-bold mt-4">
-                Recensioni
-              </span>
+              <h3 className="text-dark fs-3 ps-3 fw-bold mt-4">Recensioni</h3>
             </div>
 
             {recensioni.length === 0 ? (
@@ -172,7 +197,7 @@ const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
                       </div>
                       <div className="d-flex mt-2 pt-2">
                         <img
-                          src="/terra1.jpg"
+                          src="/admin.webp"
                           className="rounded-5 img-recensioni"
                           alt="autore"
                         />
@@ -210,13 +235,97 @@ const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
             xl={6}
             className="d-flex justify-content-center mt-5 pt-5"
           >
-            <div className="Mappa w-100 h-100 shadow">
-              <MappaTest />
+            <div className="Mappa w-100 h-100">
+              <MappaTest
+                latitudine={esperienza.latitudine}
+                longitudine={esperienza.longitudine}
+                titolo={esperienza.titolo}
+              />
+              <p className="text-center fw-lighter mt-1">
+                L'indirizzo esatto ti verrà inoltrato dopo la prenotazione
+              </p>
+              <h3 className="text-dark text-center mb-5 mt-5  fs-3 ps-3 fw-bold mt-4">
+                Domande Frequenti
+              </h3>
+              <div>
+                <h4>Come funziona in caso di maltempo?</h4>
+                <h4>La cancellazione è gratuita?</h4>
+              </div>
+              <Card className="shadow-lg card-pay border-0 rounded-0 mt-4 w-50 text-center ms-auto me-auto pt-5 pb-5 px-5 mt-5">
+                <div className="d-flex justify-content-between mb-3">
+                  <span className="fw-bolder text-light">PRENOTA</span>
+
+                  <span className="fw-bolder text-light">REGALA</span>
+                </div>
+
+                <Form.Group className="mb-3 ">
+                  <Form.Label className="text-light fw-bolder mt-3">
+                    Data
+                  </Form.Label>
+                  <Form.Control
+                    className="bg-transparent text-light border-1 rounded-0 mt-2"
+                    type="date"
+                    value={data}
+                    onChange={(e) => setData(e.target.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label className="text-light fw-bolder mt-3">
+                    Ora
+                  </Form.Label>
+                  <Form.Control
+                    className="bg-transparent text-light border-1 mt-2"
+                    type="time"
+                    value={ora}
+                    onChange={(e) => setOra(e.target.value)}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3 mt-3">
+                  <Form.Label className="mt-3 text-light fw-bolder">
+                    Partecipanti
+                  </Form.Label>
+                  <div className="mt-2">
+                    <Button
+                      className="rounded-5"
+                      variant="outline-light "
+                      onClick={() =>
+                        setPartecipanti((prev) => Math.max(1, prev - 1))
+                      }
+                    >
+                      -
+                    </Button>
+                    <span className="mx-3">{partecipanti}</span>
+                    <Button
+                      className="rounded-5"
+                      variant="outline-light"
+                      onClick={() => setPartecipanti((prev) => prev + 1)}
+                    >
+                      +
+                    </Button>
+                  </div>
+                </Form.Group>
+
+                <div className="d-flex justify-content-center mt-3 mb-2">
+                  <strong className="fs-3 text-light ">
+                    € {esperienza.prezzo * partecipanti}
+                  </strong>
+                </div>
+                <div>
+                  {" "}
+                  <Button
+                    className="esplora-btn w-100 bg-transparent fw-bold mt-3 border-0"
+                    onClick={handleAggiungiAlCarrello}
+                  >
+                    Aggiungi al carrello
+                  </Button>
+                </div>
+              </Card>
             </div>
           </Col>
         </Row>
       </Container>
-
       <hr className="text-light mt-5" />
       <Footer />
     </div>

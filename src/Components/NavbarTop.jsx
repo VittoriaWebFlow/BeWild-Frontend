@@ -18,7 +18,7 @@ const NavbarTop = ({ onCategoriaClick, onLogoClick, setUser, user }) => {
             className="bi bi-heart text-light fs-5 d-flex"
             onClick={() => navigate("/preferiti")}
           ></i>
-          <i class="bi bi-chat-right fs-5 text-light">
+          <i class="bbi bi-gift fs-5 text-light">
             <button className="text-light bg-transparent border-0"></button>
           </i>
           <i className="bi bi-flower1 text-light fs-5 d-flex align-items-center">
@@ -62,9 +62,12 @@ const NavbarTop = ({ onCategoriaClick, onLogoClick, setUser, user }) => {
               Cielo
             </button>
           </i>
-          <i class="bi bi-cart text-light fs-4">
-            <button className="bg-transparent border-0"></button>
-          </i>
+          <i
+            className="bi bi-cart fs-4 text-light"
+            title="Carrello"
+            onClick={() => navigate("/carrello")}
+            style={{ cursor: "pointer" }}
+          ></i>
           <Dropdown>
             <Dropdown.Toggle
               variant="trasparent"

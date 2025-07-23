@@ -7,23 +7,23 @@ import { useNavigate } from "react-router-dom";
 
 const Preferiti = ({ preferiti, setPreferiti }) => {
   const navigate = useNavigate();
+
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <NavbarPages />
       <Sidebar />
-      <div>
-        <Container className="mt-5 pt-5 content-wrapper">
+
+      <main className="flex-grow-1">
+        <Container className="content-wrapper">
+          <h3 className="text-light text-center">PREFERITI</h3>
+          <hr className="text-light border-5 w-75 ms-auto me-auto" />
+
           {preferiti.length === 0 ? (
-            <p className="text-center mt-5 pt-5 fs-4">
-              Nessun preferito ancora!
-              <div style={{ height: "600px" }}></div>
+            <p className="text-center center-words fs-1 fw-bolder text-light">
+              Nessuna attività nei preferiti
             </p>
           ) : (
             <Row className="justify-content-center mt-5">
-              <div>
-                <p className="text-light text-center">PREFERITI</p>
-                <hr className="text-light border-4 w-75 ms-auto me-auto" />
-              </div>
               {preferiti.map((exp) => (
                 <Col
                   xs={12}
@@ -94,11 +94,10 @@ const Preferiti = ({ preferiti, setPreferiti }) => {
             </button>
           </div>
         </Container>
-      </div>
-      <Col className="d-flex justify-content-center"></Col>
-      <hr className="text-white w-100 border-4 ms-auto mt-5 me-auto hr-custom " />
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 };
 
