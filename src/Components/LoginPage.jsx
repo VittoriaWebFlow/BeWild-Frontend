@@ -42,7 +42,7 @@ const LoginPage = ({ setUser }) => {
             placeholder="Email"
             className="form-control rounded-5 "
             value={email}
-            onChange={(e) => setEmail(e.target.value)} // ✍️ aggiorno lo stato
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -53,7 +53,7 @@ const LoginPage = ({ setUser }) => {
             placeholder="Password"
             className="form-control rounded-5"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} // ✍️ aggiorno lo stato
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
