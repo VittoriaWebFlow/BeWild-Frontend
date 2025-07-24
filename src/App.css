@@ -243,6 +243,18 @@ i:hover {
   }
 }
 
+.log-title {
+  font-family: "Libertinus Mono", monospace;
+}
+
+.log-card {
+  background-image: linear-gradient(
+    180deg,
+    rgb(159, 159, 184),
+    rgb(44, 75, 85)
+  );
+}
+
 .custom-card {
   max-width: 280px;
   transition: transform 0.4s ease-in-out;
@@ -445,4 +457,68 @@ h2 {
     rgb(159, 159, 184),
     rgb(44, 75, 85)
   );
+}
+
+.Card-img {
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent 3%,
+    rgb(11, 207, 251),
+    white
+  );
+  padding: 18px;
+  animation: 4s spin linear infinite;
+}
+
+.title-shop {
+  font-family: "Libertinus Mono", monospace;
+}
+
+.card-shop {
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent 3%,
+    rgb(134, 232, 232),
+    white,
+    rgb(96, 162, 168),
+    rgb(38, 38, 42)
+  );
+  padding: 12px;
+  animation: 4s spin linear infinite;
+}
+
+.modal-dialog-bottom {
+  width: 100%;
+  max-width: 65%;
+  height: 100%;
+  animation: slideUp 0.8s ease-out forwards;
+  transform: translateY(30%);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.modal-pay {
+  background-image: linear-gradient(
+    180deg,
+    rgb(108, 155, 159),
+    rgb(70, 77, 80),
+    rgb(23, 45, 47)
+  );
+}
+.modal-title {
+  background-image: linear-gradient(180deg, rgb(108, 155, 159));
+}
+
+#faq-accordion .accordion-button {
+  background-color: transparent !important;
+  color: white !important;
+  box-shadow: none !important;
+  border: none !important;
 }

@@ -22,18 +22,20 @@ const LoginPage = ({ setUser }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
+    <div className="d-flex justify-content-center bg-dark align-items-center vh-100">
       <form
         onSubmit={handleLogin}
-        className=" p-5 rounded-0 shadow-lg"
+        className=" p-5  rounded-0 shadow-lg log-card"
         style={{ width: "370px", height: "520px" }}
       >
         <div className="d-flex justify-content-center ">
           <img src="./BeWildlogo.png" className="logo-navbar"></img>
         </div>
-        <h5 className="text-light fw-light pb-3 d-flex justify-content-center">
-          Accedi per iniziare il tuo viaggio!
-        </h5>
+        <div className="d-flex justify-content-center">
+          <h5 className="text-light log-title fw-lighter pb-3">
+            Inizia il tuo viaggio
+          </h5>
+        </div>
         <div className="pb-4">
           <input
             type="email"
@@ -58,13 +60,14 @@ const LoginPage = ({ setUser }) => {
         <a href="#" className=" text-light text-decoration-none ">
           Password dimenticata?
         </a>
-
-        <button
-          type="submit"
-          className="btn btn-dark rounded-5 mb-3 w-100 mt-3"
-        >
-          Accedi
-        </button>
+        <div className="d-flex justify-content-center mt-3 mb-3">
+          <button
+            type="submit"
+            className="btn btn-transparent text-light fw-bold esplora-btn rounded-5 mb-3 w-50 mt-3"
+          >
+            ACCEDI
+          </button>
+        </div>
         <h5>
           Oppure{" "}
           <a href="#" className="text-light">

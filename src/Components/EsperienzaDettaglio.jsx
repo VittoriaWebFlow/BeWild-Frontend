@@ -1,6 +1,14 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
-import { Container, Row, Col, Modal, Button, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Modal,
+  Button,
+  Card,
+  AccordionHeader,
+} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import "../App.css";
 import Footer from "./Footer";
@@ -10,6 +18,7 @@ import MappaTest from "./MappaTest";
 import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useCarrello } from "../context/CarrelloContext";
+import { Accordion } from "react-bootstrap";
 
 const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
   const { id } = useParams();
@@ -244,14 +253,46 @@ const EsperienzaDettaglio = ({ preferiti, setPreferiti, user }) => {
               <p className="text-center fw-lighter mt-1">
                 L'indirizzo esatto ti verrà inoltrato dopo la prenotazione
               </p>
-              <h3 className="text-dark text-center mb-5 mt-5  fs-3 ps-3 fw-bold mt-4">
+              <h3 className=" text-light text-center text-light mb-3 mt-5  fs-3 ps-3 fw-light mt-4">
                 Domande Frequenti
               </h3>
-              <div>
-                <h4>Come funziona in caso di maltempo?</h4>
-                <h4>La cancellazione è gratuita?</h4>
-              </div>
-              <Card className="shadow-lg card-pay border-0 rounded-0 mt-4 w-50 text-center ms-auto me-auto pt-5 pb-5 px-5 mt-5">
+              <Accordion id="faq-accordion" className="mb-5 ">
+                <Accordion.Item eventKey="0" className="bg-transparent">
+                  <Accordion.Header>
+                    Come funziona in caso di maltempo?
+                  </Accordion.Header>
+                  <Accordion.Body className="text-light fs-4">
+                    Se l’attività viene annullata per maltempo, potrai
+                    riprogrammare gratuitamente o ricevere un rimborso completo.
+                    In alternativa, potrai scegliere un’esperienza simile tra le
+                    nostre proposte disponibili. Ti informeremo tempestivamente
+                    via email o telefono in caso di variazioni dovute alle
+                    condizioni meteo. La sicurezza viene sempre prima di tutto:
+                    per questo ci riserviamo il diritto di sospendere l’attività
+                    anche all’ultimo momento in caso di rischio. In caso di
+                    annullamento, il rimborso verrà emesso entro pochi giorni
+                    lavorativi, senza costi aggiuntivi.
+                  </Accordion.Body>
+                </Accordion.Item>
+
+                <Accordion.Item eventKey="1" className="bg-transparent">
+                  <Accordion.Header>
+                    La cancellazione è gratuita?
+                  </Accordion.Header>
+                  <Accordion.Body className="text-light fs-4">
+                    Puoi cancellare gratuitamente fino a 48 ore prima
+                    dell’esperienza. Oltre questo termine, non è garantito il
+                    rimborso, salvo casi eccezionali. La richiesta di
+                    cancellazione può essere effettuata comodamente dal tuo
+                    profilo o contattando il nostro supporto. In caso di
+                    cancellazione entro i tempi previsti, riceverai un rimborso
+                    completo entro pochi giorni lavorativi. Ti consigliamo di
+                    avvisarci il prima possibile per consentire ad altri di
+                    prenotare al tuo posto.
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+              <Card className="shadow-lg card-pay bg-dark border-0 rounded-0 mt-5 w-50 text-center ms-auto me-auto pt-5 pb-5 px-5 mt-5">
                 <div className="d-flex justify-content-between mb-3">
                   <span className="fw-bolder text-light">PRENOTA</span>
 

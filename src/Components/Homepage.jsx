@@ -174,7 +174,7 @@ const Homepage = ({ user, setUser, preferiti, setPreferiti }) => {
           </Button>
         </Modal.Body>
       </Modal>
-      <Card className="bg-dark text-white rounded-0 border-0 mt-5 ">
+      <Card className=" bg-black text-white rounded-0 border-0 mt-5 ">
         <Card.Img
           src="/sub.jpg"
           alt="Card image"
