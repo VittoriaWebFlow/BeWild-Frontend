@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -15,7 +16,7 @@ const Sidebar = () => {
           <a href="#"> Preferiti</a>
         </li>
         <li className="pb-3">
-          <a href="#">Forum</a>
+         <Link to="/forum">Forum</Link>
         </li>
         <li className="pb-3">
           <a href="#"> Offerte</a>

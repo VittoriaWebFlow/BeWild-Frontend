@@ -1,12 +1,26 @@
-# React + Vite
+spring.config.import=file:env.properties
+spring.application.name=backend
+server.port=8081
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+spring.datasource.url=jdbc:postgresql://localhost:5432/backend
+spring.datasource.username=postgres
+spring.datasource.password=ciao1998
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
 
-Currently, two official plugins are available:
+cloudinary.cloud_name=${cloud_name}
+cloudinary.api_key=${api_key}
+cloudinary.api_secret=${api_secret}
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+##gmail
+#spring.mail.host=smtp.gmail.com
+#spring.mail.port=587
+#spring.mail.username=${gmail.email}
+#spring.mail.password=${gmail.password}
+#spring.mail.protocol=smtp
+#spring.mail.properties.mail.smtp.auth=true
+#spring.mail.properties.mail.smtp.starttls.enable=true
+#spring.mail.properties.mail.smtp.starttls.required=true
+#spring.mail.properties.mail.smtp.ssl.enable=false
+#spring.mail.debug=true
